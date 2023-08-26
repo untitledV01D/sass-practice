@@ -1,4 +1,4 @@
-<h1 align="center">Welcome my Sass Practice 👋</h1>
+<h1 align="center">Welcome to my Sass Practice 👋</h1>
 
 <p align="center">
   <a href="" target="_blank" rel="noopener noreferrer">
