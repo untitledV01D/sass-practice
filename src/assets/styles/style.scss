@@ -1,0 +1,206 @@
+// Variables
+$primary-color: #219DFD;
+$secondary-color: #000;
+$tertiary-color: #FFF;
+
+$background-color: #219DFD;
+
+$font-color: #49525B;
+
+$box-shadow: 0 0 20px 3px #FFF;
+
+$fixed-unit: 8px;
+$font-unit: 1em;
+
+$limit: 10;
+
+// Functions
+@function size($value, $fixed: true){
+  @if($fixed){
+    @return $value * $fixed-unit;
+  }
+
+  @return $value * $font-unit;
+}
+
+
+// Mixins (compact properties in a Keyword)
+@mixin reset-pm {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin btn($bg, $color, $bold: false){
+  display: flex;
+
+  background-color: $bg;
+  color: $color;
+  border-radius: 20px;
+  padding: 8px 16px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+
+  @if($bold == true){
+    font-weight: 700;
+  } @else {
+    font-weight: 400;
+  }
+}
+
+// Basic styles
+* {
+  @include reset-pm();
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+a {
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: size(6);
+}
+
+h3 {
+  font-weight: 300;
+  font-size: size(3);
+}
+
+.app {
+  background-color: #FFF;
+  margin: 100px auto;
+  width: 80%;
+  height: 90%;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 0 20px 2px rgba($color: #000, $alpha: 0.3);
+  
+  background-image: url(../images/bg.jpg);
+  background-size: 100% 100%;
+}
+
+// Nesting
+ul {
+  @include reset-pm();
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  li {
+
+    a {
+      @include btn($bg: $primary-color, $color: $font-color, $bold: true);
+      border: 2px solid rgba($color: white, $alpha: 0.0);
+      
+      &:hover {
+        @include btn($secondary-color, $tertiary-color, true);
+        border: 2px solid rgba($color: white, $alpha: 1.0);
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+.btn {
+  background-color: $tertiary-color;
+  transition: all 200ms;
+  &.btn-cta {
+    @include btn($primary-color, $secondary-color, true);
+
+    &:hover {
+      @include btn($secondary-color, $tertiary-color, true);
+      box-shadow: $box-shadow;
+    }
+  }
+
+  &:hover {
+    @include btn($tertiary-color, $secondary-color, true);
+    box-shadow: $box-shadow;
+  }
+}
+
+.prices-container {
+  display: flex;
+  justify-content: center;
+}
+
+.prices {
+  .prev {
+    font-size: size(1.2, false);
+    text-decoration: line-through;
+    color: $font-color;
+  }
+
+  .now {
+    font-size: size(2, false);
+    font-weight: 700;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .col {
+    width: 50%;
+  }
+
+  .col-30 {
+    width: 30%;
+  }
+
+  .col-70 {
+    width: 50%;
+  }
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+@for $i from 1 to $limit {
+
+  .m-#{$i}{
+    margin: $i * $fixed-unit;
+  }
+
+}
+
+@for $i from 1 to $limit {
+
+  .p-#{$i}{
+    padding: $i * $fixed-unit;
+  }
+
+}
+
+@for $i from 1 to $limit {
+
+  .py-#{$i}{
+    margin-top: $i * $fixed-unit;
+    margin-bottom: $i * $fixed-unit;
+  }
+
+}
+
+header {
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+

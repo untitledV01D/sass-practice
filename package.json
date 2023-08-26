@@ -1,0 +1,17 @@
+{
+  "name": "sass-project",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A small layout made with Sass",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.66.1",
+    "vite": "^4.4.5"
+  }
+}
